@@ -676,279 +676,703 @@
         padding: 24px 16px;
       }
     }
+
+    /* ADIÇÃO: ESTILOS EXCLUSIVOS DO QUIZ */
+
+    #quiz-screen {
+      min-height: 100vh;
+      padding: 35px 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #080808;
+      color: #ffffff;
+    }
+
+    .quiz-container {
+      width: 100%;
+      max-width: 620px;
+      margin: auto;
+    }
+
+    .quiz-brand {
+      text-align: center;
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+    }
+
+    .quiz-progress-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+      color: #b8b8b8;
+      font-size: 13px;
+    }
+
+    .quiz-progress-track {
+      width: 100%;
+      height: 6px;
+      background: #252525;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    .quiz-progress-fill {
+      width: 14.2857%;
+      height: 100%;
+      background: var(--cyan);
+      border-radius: 20px;
+      transition: width .25s ease;
+    }
+
+    .quiz-card {
+      padding: 30px 25px;
+      background: #111111;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 16px;
+      box-shadow: 0 15px 50px rgba(0,0,0,.25);
+    }
+
+    .quiz-eyebrow {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .quiz-question {
+      font-size: clamp(25px, 5vw, 33px);
+      line-height: 1.2;
+      letter-spacing: -.6px;
+      margin-bottom: 12px;
+    }
+
+    .quiz-description {
+      color: #b8b8b8;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .quiz-options {
+      display: grid;
+      gap: 11px;
+    }
+
+    .quiz-option {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 16px;
+      background: #181818;
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 10px;
+      text-align: left;
+      font-family: inherit;
+      font-size: 14px;
+      line-height: 1.45;
+      cursor: pointer;
+      transition: border-color .2s ease, background .2s ease;
+    }
+
+    .quiz-option:hover {
+      border-color: var(--cyan);
+      background: #1c2525;
+    }
+
+    .quiz-option:focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 3px;
+    }
+
+    .quiz-option.selected {
+      border-color: var(--cyan);
+      background: rgba(37,244,238,.10);
+    }
+
+    .quiz-option:disabled {
+      cursor: default;
+      opacity: .8;
+    }
+
+    .quiz-option-letter {
+      display: flex;
+      flex: 0 0 32px;
+      width: 32px;
+      height: 32px;
+      align-items: center;
+      justify-content: center;
+      background: #262626;
+      color: var(--cyan);
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .quiz-option.selected .quiz-option-letter {
+      background: var(--cyan);
+      color: #080808;
+    }
+
+    .quiz-footer {
+      margin-top: 20px;
+      text-align: center;
+      color: #858585;
+      font-size: 12px;
+    }
+
+    .quiz-fade {
+      animation: quizFadeIn .25s ease;
+    }
+
+    @keyframes quizFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      #quiz-screen {
+        padding: 25px 15px;
+        align-items: center;
+      }
+
+      .quiz-brand {
+        margin-bottom: 24px;
+      }
+
+      .quiz-card {
+        padding: 24px 17px;
+      }
+
+      .quiz-question {
+        font-size: 26px;
+      }
+
+      .quiz-option {
+        padding: 14px 12px;
+        gap: 10px;
+        font-size: 13px;
+      }
+
+      .quiz-option-letter {
+        flex-basis: 30px;
+        width: 30px;
+        height: 30px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <header class="hero">
-    <div class="hero-content">
-      <span class="eyebrow">MÉTODO CRESCER</span>
+  <!-- ADIÇÃO: QUIZ EXIBIDO ANTES DA PÁGINA ORIGINAL -->
 
-      <h1>
-        Pare de postar sem saber <span>o que fazer.</span>
-      </h1>
+  <main id="quiz-screen">
+    <div class="quiz-container">
+      <div class="quiz-brand">MÉTODO CRESCER</div>
 
-      <p class="hero-description">
-        Aprenda a criar vídeos, desenvolver seu perfil e entender o que pode ajudar seu conteúdo a alcançar mais pessoas. Mesmo que você esteja começando agora.
+      <div class="quiz-progress-info">
+        <span id="quiz-progress-label">Pergunta 1 de 7</span>
+        <span id="quiz-progress-percent">14%</span>
+      </div>
+
+      <div
+        class="quiz-progress-track"
+        role="progressbar"
+        aria-label="Progresso do questionário"
+        aria-valuemin="0"
+        aria-valuemax="7"
+        aria-valuenow="1"
+        id="quiz-progress-bar"
+      >
+        <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+      </div>
+
+      <div class="quiz-card quiz-fade" id="quiz-card" aria-live="polite">
+        <span class="quiz-eyebrow">Vamos conhecer você</span>
+        <h1 class="quiz-question" id="quiz-question">
+          Como está seu perfil no TikTok hoje?
+        </h1>
+        <p class="quiz-description" id="quiz-description">
+          Escolha a alternativa que mais combina com o seu momento atual.
+        </p>
+        <div class="quiz-options" id="quiz-options"></div>
+      </div>
+
+      <p class="quiz-footer">
+        Responda às perguntas para conhecer o Método Crescer.
       </p>
-
-      <a class="button" href="#apresentacao">
-        QUERO CONHECER O MÉTODO
-      </a>
-
-      <p class="microcopy">
-        Aprenda no seu ritmo, usando o celular que você já tem.
-      </p>
     </div>
-  </header>
+  </main>
 
-  <section class="video-section" id="apresentacao">
-    <div class="container">
-      <div class="section-heading">
-        <h2>Entenda como funciona o <span class="highlight">Método Crescer</span></h2>
-        <p>Assista à apresentação e descubra como organizar melhor sua criação de conteúdo.</p>
-      </div>
+  <!-- A PÁGINA DE VENDAS ORIGINAL COMEÇA AQUI.
+       O CONTEÚDO ORIGINAL FOI MANTIDO. -->
 
-      <div class="video-frame">
-        <iframe
-          src="https://www.youtube.com/embed/SEU_ID_DO_VIDEO"
-          title="Apresentação do Método Crescer"
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-  </section>
+  <div id="sales-page" style="display: none;">
 
-  <section class="content-section section-dark">
-    <div class="container">
-      <div class="section-heading">
-        <span class="eyebrow">MENOS IMPROVISO, MAIS DIREÇÃO</span>
-        <h2>Você não precisa postar por postar.</h2>
-        <p>Com um processo mais organizado, fica mais fácil planejar os vídeos e aprender com os resultados do seu perfil.</p>
-      </div>
+    <header class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">MÉTODO CRESCER</span>
 
-      <div class="benefits-grid">
-        <article class="benefit-card">
-          <div class="benefit-icon">01</div>
-          <h3>Tenha ideias para seus vídeos</h3>
-          <p>Aprenda maneiras de encontrar temas e transformar ideias em conteúdos que despertem a curiosidade do público.</p>
-        </article>
+        <h1>
+          Pare de postar sem saber <span>o que fazer.</span>
+        </h1>
 
-        <article class="benefit-card">
-          <div class="benefit-icon">02</div>
-          <h3>Prenda a atenção desde o início</h3>
-          <p>Entenda como trabalhar os primeiros segundos, a estrutura do vídeo e a mensagem que você quer transmitir.</p>
-        </article>
-
-        <article class="benefit-card">
-          <div class="benefit-icon">03</div>
-          <h3>Crie com mais estratégia</h3>
-          <p>Organize sua rotina de publicação e observe quais conteúdos geram mais interesse e interação.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <div class="statement">
-    <p>
-      Você não precisa esperar pelo vídeo perfeito.
-      Precisa aprender a <span>criar, publicar e evoluir.</span>
-    </p>
-  </div>
-
-  <section class="content-section section-black">
-    <div class="container">
-      <div class="section-heading">
-        <span class="eyebrow">O QUE VOCÊ VAI APRENDER</span>
-        <h2>Um caminho para desenvolver seu conteúdo</h2>
-        <p>Conheça os temas que fazem parte do Método Crescer.</p>
-      </div>
-
-      <div class="modules-grid">
-        <article class="module">
-          <div class="module-number">01</div>
-          <div>
-            <h3>Fundamentos do TikTok</h3>
-            <p>Entenda melhor a plataforma, o perfil e os formatos de conteúdo.</p>
-          </div>
-        </article>
-
-        <article class="module">
-          <div class="module-number">02</div>
-          <div>
-            <h3>Ideias de conteúdo</h3>
-            <p>Descubra formas de pesquisar referências e planejar novas publicações.</p>
-          </div>
-        </article>
-
-        <article class="module">
-          <div class="module-number">03</div>
-          <div>
-            <h3>Ganchos e roteiros</h3>
-            <p>Estruture aberturas, desenvolvimentos e finais para seus vídeos.</p>
-          </div>
-        </article>
-
-        <article class="module">
-          <div class="module-number">04</div>
-          <div>
-            <h3>Gravação e edição pelo celular</h3>
-            <p>Conheça princípios práticos para gravar e editar seus conteúdos.</p>
-          </div>
-        </article>
-
-        <article class="module">
-          <div class="module-number">05</div>
-          <div>
-            <h3>Estratégia de crescimento</h3>
-            <p>Aprenda a acompanhar os resultados e identificar oportunidades de melhoria.</p>
-          </div>
-        </article>
-
-        <article class="module">
-          <div class="module-number">06</div>
-          <div>
-            <h3>Lives e relacionamento</h3>
-            <p>Entenda como interagir com sua audiência e fortalecer a comunidade do perfil.</p>
-          </div>
-        </article>
-
-        <article class="module">
-          <div class="module-number">07</div>
-          <div>
-            <h3>Comunidade de aprendizado</h3>
-            <p>Tenha um espaço para acompanhar orientações e trocar experiências, conforme as condições da oferta.</p>
-          </div>
-        </article>
-
-        <article class="module">
-          <div class="module-number">08</div>
-          <div>
-            <h3>Possibilidades de monetização</h3>
-            <p>Conheça caminhos possíveis para transformar seu conteúdo em oportunidades, sem promessa de ganhos.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="content-section section-dark">
-    <div class="container center">
-      <span class="eyebrow">FEITO PARA QUEM QUER EVOLUIR</span>
-      <h2 class="section-title">O Método Crescer pode ser para você que...</h2>
-      <p class="section-description">
-        Quer levar a criação de conteúdo mais a sério, mas precisa de orientação para dar os próximos passos.
-      </p>
-
-      <div class="audience-list">
-        <div class="audience-item"><span>✓</span> Está começando do zero.</div>
-        <div class="audience-item"><span>✓</span> Já publica, mas quer melhorar seus vídeos.</div>
-        <div class="audience-item"><span>✓</span> Fica sem ideias do que postar.</div>
-        <div class="audience-item"><span>✓</span> Quer desenvolver seu perfil com mais planejamento.</div>
-        <div class="audience-item"><span>✓</span> Quer aprender a gravar e editar pelo celular.</div>
-        <div class="audience-item"><span>✓</span> Está disposto a praticar e testar novas ideias.</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="content-section section-black" id="inscricao">
-    <div class="container">
-      <div class="offer-wrap">
-        <span class="offer-label">COMECE SUA JORNADA</span>
-        <h2>Entre para o Método Crescer</h2>
-        <p class="offer-description">
-          Acesse o conteúdo do método e comece a aplicar o que aprender na criação dos seus vídeos.
+        <p class="hero-description">
+          Aprenda a criar vídeos, desenvolver seu perfil e entender o que pode ajudar seu conteúdo a alcançar mais pessoas. Mesmo que você esteja começando agora.
         </p>
 
-        <p class="price-caption">Acesso por apenas</p>
-        <div class="price"><small>R$</small> 47</div>
-
-        <ul class="offer-list">
-          <li>Conteúdos organizados para acompanhar no seu ritmo</li>
-          <li>Orientações sobre criação de vídeos</li>
-          <li>Ideias, ganchos e estrutura de conteúdo</li>
-          <li>Estratégias para desenvolver seu perfil</li>
-          <li>Acesso conforme as condições apresentadas na compra</li>
-        </ul>
-
-        <a
-          class="button button-pink button-full"
-          href="COLE_SEU_LINK_DE_CHECKOUT"
-          target="_blank"
-          rel="noopener noreferrer">
-          QUERO ENTRAR NO MÉTODO
+        <a class="button" href="#apresentacao">
+          QUERO CONHECER O MÉTODO
         </a>
 
-        <p class="secure-note">
-          Confira as condições de acesso e pagamento na página de checkout.
+        <p class="microcopy">
+          Aprenda no seu ritmo, usando o celular que você já tem.
         </p>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <section class="content-section section-dark">
-    <div class="container">
-      <div class="section-heading">
-        <span class="eyebrow">DÚVIDAS FREQUENTES</span>
-        <h2>Antes de começar</h2>
-        <p>Confira algumas respostas sobre o Método Crescer.</p>
+    <section class="video-section" id="apresentacao">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Entenda como funciona o <span class="highlight">Método Crescer</span></h2>
+          <p>Assista à apresentação e descubra como organizar melhor sua criação de conteúdo.</p>
+        </div>
+
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube.com/embed/SEU_ID_DO_VIDEO"
+            title="Apresentação do Método Crescer"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
       </div>
+    </section>
 
-      <div class="faq-list">
-        <details>
-          <summary>Preciso ter experiência para começar?</summary>
-          <p>Não é necessário já ser um criador experiente. O método foi pensado para ajudar você a organizar o aprendizado e desenvolver suas habilidades na criação de conteúdo.</p>
-        </details>
+    <section class="content-section section-dark">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">MENOS IMPROVISO, MAIS DIREÇÃO</span>
+          <h2>Você não precisa postar por postar.</h2>
+          <p>Com um processo mais organizado, fica mais fácil planejar os vídeos e aprender com os resultados do seu perfil.</p>
+        </div>
 
-        <details>
-          <summary>Posso criar vídeos usando apenas o celular?</summary>
-          <p>Sim. Você pode começar com o celular que já possui e aprender a melhorar a gravação, a edição e o planejamento dos seus vídeos.</p>
-        </details>
+        <div class="benefits-grid">
+          <article class="benefit-card">
+            <div class="benefit-icon">01</div>
+            <h3>Tenha ideias para seus vídeos</h3>
+            <p>Aprenda maneiras de encontrar temas e transformar ideias em conteúdos que despertem a curiosidade do público.</p>
+          </article>
 
-        <details>
-          <summary>O método garante que meus vídeos vão viralizar?</summary>
-          <p>Não. O desempenho depende de vários fatores, como o conteúdo, o público, a consistência e as respostas da audiência. O método oferece orientações, mas não garante viralização ou crescimento específico.</p>
-        </details>
+          <article class="benefit-card">
+            <div class="benefit-icon">02</div>
+            <h3>Prenda a atenção desde o início</h3>
+            <p>Entenda como trabalhar os primeiros segundos, a estrutura do vídeo e a mensagem que você quer transmitir.</p>
+          </article>
 
-        <details>
-          <summary>Como faço para acessar o conteúdo?</summary>
-          <p>Clique no botão de inscrição e confira as instruções apresentadas na página de pagamento após concluir sua compra.</p>
-        </details>
-
-        <details>
-          <summary>Como funciona o pagamento?</summary>
-          <p>O preço apresentado nesta página é de R$ 47. As formas de pagamento e as condições aplicáveis serão exibidas no checkout.</p>
-        </details>
+          <article class="benefit-card">
+            <div class="benefit-icon">03</div>
+            <h3>Crie com mais estratégia</h3>
+            <p>Organize sua rotina de publicação e observe quais conteúdos geram mais interesse e interação.</p>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="final-cta">
-    <div class="container">
-      <span class="eyebrow">SEU PRÓXIMO PASSO</span>
-      <h2>Chega de depender apenas da inspiração para criar.</h2>
+    <div class="statement">
       <p>
-        Aprenda, coloque em prática e desenvolva seu jeito de produzir conteúdo com mais intenção e planejamento.
+        Você não precisa esperar pelo vídeo perfeito.
+        Precisa aprender a <span>criar, publicar e evoluir.</span>
       </p>
-
-      <a class="button" href="#inscricao">
-        QUERO CONHECER O MÉTODO
-      </a>
     </div>
-  </section>
 
-  <footer>
-    <p>© <span id="current-year"></span> Método Crescer. Todos os direitos reservados.</p>
-    <p>Produto independente, sem vínculo oficial com o TikTok.</p>
-    <p>Os resultados dependem da aplicação individual e de fatores que podem variar.</p>
-  </footer>
+    <section class="content-section section-black">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">O QUE VOCÊ VAI APRENDER</span>
+          <h2>Um caminho para desenvolver seu conteúdo</h2>
+          <p>Conheça os temas que fazem parte do Método Crescer.</p>
+        </div>
+
+        <div class="modules-grid">
+          <article class="module">
+            <div class="module-number">01</div>
+            <div>
+              <h3>Fundamentos do TikTok</h3>
+              <p>Entenda melhor a plataforma, o perfil e os formatos de conteúdo.</p>
+            </div>
+          </article>
+
+          <article class="module">
+            <div class="module-number">02</div>
+            <div>
+              <h3>Ideias de conteúdo</h3>
+              <p>Descubra formas de pesquisar referências e planejar novas publicações.</p>
+            </div>
+          </article>
+
+          <article class="module">
+            <div class="module-number">03</div>
+            <div>
+              <h3>Ganchos e roteiros</h3>
+              <p>Estruture aberturas, desenvolvimentos e finais para seus vídeos.</p>
+            </div>
+          </article>
+
+          <article class="module">
+            <div class="module-number">04</div>
+            <div>
+              <h3>Gravação e edição pelo celular</h3>
+              <p>Conheça princípios práticos para gravar e editar seus conteúdos.</p>
+            </div>
+          </article>
+
+          <article class="module">
+            <div class="module-number">05</div>
+            <div>
+              <h3>Estratégia de crescimento</h3>
+              <p>Aprenda a acompanhar os resultados e identificar oportunidades de melhoria.</p>
+            </div>
+          </article>
+
+          <article class="module">
+            <div class="module-number">06</div>
+            <div>
+              <h3>Lives e relacionamento</h3>
+              <p>Entenda como interagir com sua audiência e fortalecer a comunidade do perfil.</p>
+            </div>
+          </article>
+
+          <article class="module">
+            <div class="module-number">07</div>
+            <div>
+              <h3>Comunidade de aprendizado</h3>
+              <p>Tenha um espaço para acompanhar orientações e trocar experiências, conforme as condições da oferta.</p>
+            </div>
+          </article>
+
+          <article class="module">
+            <div class="module-number">08</div>
+            <div>
+              <h3>Possibilidades de monetização</h3>
+              <p>Conheça caminhos possíveis para transformar seu conteúdo em oportunidades, sem promessa de ganhos.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section section-dark">
+      <div class="container center">
+        <span class="eyebrow">FEITO PARA QUEM QUER EVOLUIR</span>
+        <h2 class="section-title">O Método Crescer pode ser para você que...</h2>
+        <p class="section-description">
+          Quer levar a criação de conteúdo mais a sério, mas precisa de orientação para dar os próximos passos.
+        </p>
+
+        <div class="audience-list">
+          <div class="audience-item"><span>✓</span> Está começando do zero.</div>
+          <div class="audience-item"><span>✓</span> Já publica, mas quer melhorar seus vídeos.</div>
+          <div class="audience-item"><span>✓</span> Fica sem ideias do que postar.</div>
+          <div class="audience-item"><span>✓</span> Quer desenvolver seu perfil com mais planejamento.</div>
+          <div class="audience-item"><span>✓</span> Quer aprender a gravar e editar pelo celular.</div>
+          <div class="audience-item"><span>✓</span> Está disposto a praticar e testar novas ideias.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section section-black" id="inscricao">
+      <div class="container">
+        <div class="offer-wrap">
+          <span class="offer-label">COMECE SUA JORNADA</span>
+          <h2>Entre para o Método Crescer</h2>
+          <p class="offer-description">
+            Acesse o conteúdo do método e comece a aplicar o que aprender na criação dos seus vídeos.
+          </p>
+
+          <p class="price-caption">Acesso por apenas</p>
+          <div class="price"><small>R$</small> 47</div>
+
+          <ul class="offer-list">
+            <li>Conteúdos organizados para acompanhar no seu ritmo</li>
+            <li>Orientações sobre criação de vídeos</li>
+            <li>Ideias, ganchos e estrutura de conteúdo</li>
+            <li>Estratégias para desenvolver seu perfil</li>
+            <li>Acesso conforme as condições apresentadas na compra</li>
+          </ul>
+
+          <a
+            class="button button-pink button-full"
+            href="COLE_SEU_LINK_DE_CHECKOUT"
+            target="_blank"
+            rel="noopener noreferrer">
+            QUERO ENTRAR NO MÉTODO
+          </a>
+
+          <p class="secure-note">
+            Confira as condições de acesso e pagamento na página de checkout.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section section-dark">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">DÚVIDAS FREQUENTES</span>
+          <h2>Antes de começar</h2>
+          <p>Confira algumas respostas sobre o Método Crescer.</p>
+        </div>
+
+        <div class="faq-list">
+          <details>
+            <summary>Preciso ter experiência para começar?</summary>
+            <p>Não é necessário já ser um criador experiente. O método foi pensado para ajudar você a organizar o aprendizado e desenvolver suas habilidades na criação de conteúdo.</p>
+          </details>
+
+          <details>
+            <summary>Posso criar vídeos usando apenas o celular?</summary>
+            <p>Sim. Você pode começar com o celular que já possui e aprender a melhorar a gravação, a edição e o planejamento dos seus vídeos.</p>
+          </details>
+
+          <details>
+            <summary>O método garante que meus vídeos vão viralizar?</summary>
+            <p>Não. O desempenho depende de vários fatores, como o conteúdo, o público, a consistência e as respostas da audiência. O método oferece orientações, mas não garante viralização ou crescimento específico.</p>
+          </details>
+
+          <details>
+            <summary>Como faço para acessar o conteúdo?</summary>
+            <p>Clique no botão de inscrição e confira as instruções apresentadas na página de pagamento após concluir sua compra.</p>
+          </details>
+
+          <details>
+            <summary>Como funciona o pagamento?</summary>
+            <p>O preço apresentado nesta página é de R$ 47. As formas de pagamento e as condições aplicáveis serão exibidas no checkout.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container">
+        <span class="eyebrow">SEU PRÓXIMO PASSO</span>
+        <h2>Chega de depender apenas da inspiração para criar.</h2>
+        <p>
+          Aprenda, coloque em prática e desenvolva seu jeito de produzir conteúdo com mais intenção e planejamento.
+        </p>
+
+        <a class="button" href="#inscricao">
+          QUERO CONHECER O MÉTODO
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© <span id="current-year"></span> Método Crescer. Todos os direitos reservados.</p>
+      <p>Produto independente, sem vínculo oficial com o TikTok.</p>
+      <p>Os resultados dependem da aplicação individual e de fatores que podem variar.</p>
+    </footer>
+
+  </div>
 
   <script>
-    document.getElementById("current-year").textContent =
-      new Date().getFullYear();
+    /* ADIÇÃO: FUNCIONAMENTO DO QUIZ */
+
+    const quizQuestions = [
+      {
+        question: "Como está seu perfil no TikTok hoje?",
+        description: "Escolha a alternativa que mais combina com o seu momento atual.",
+        answers: [
+          "Ainda não comecei a publicar vídeos.",
+          "Estou começando e tenho poucos seguidores.",
+          "Já publico, mas meu perfil cresce pouco.",
+          "Já tenho um perfil ativo e quero crescer mais."
+        ]
+      },
+      {
+        question: "Qual é sua maior dificuldade na hora de criar conteúdo?",
+        description: "Queremos entender o que mais dificulta sua rotina de criação.",
+        answers: [
+          "Não sei o que postar ou fico sem ideias.",
+          "Tenho dificuldade para prender a atenção.",
+          "Meus vídeos recebem poucas visualizações.",
+          "Tenho dificuldade para manter a frequência."
+        ]
+      },
+      {
+        question: "Qual é o seu principal objetivo no TikTok?",
+        description: "Pense no que você mais gostaria de conquistar com seu perfil.",
+        answers: [
+          "Conquistar meus primeiros seguidores.",
+          "Aumentar as visualizações dos meus vídeos.",
+          "Construir uma audiência engajada.",
+          "Transformar meu conteúdo em oportunidades."
+        ]
+      },
+      {
+        question: "Como você costuma escolher o assunto dos seus vídeos?",
+        description: "Selecione a opção que melhor descreve sua maneira de criar.",
+        answers: [
+          "Escolho na hora, sem muito planejamento.",
+          "Busco ideias, mas tenho dificuldade para adaptá-las.",
+          "Observo tendências e conteúdos de outros criadores.",
+          "Planejo os temas e penso no que meu público quer assistir."
+        ]
+      },
+      {
+        question: "Quando um vídeo tem poucas visualizações, o que você faz?",
+        description: "Sua reação pode mostrar como você lida com os resultados.",
+        answers: [
+          "Fico desanimado e paro de publicar por um tempo.",
+          "Continuo publicando, mas sem saber o que mudar.",
+          "Tento fazer outro vídeo sobre um assunto diferente.",
+          "Analiso o vídeo e procuro maneiras de melhorar."
+        ]
+      },
+      {
+        question: "Com que frequência você consegue publicar vídeos?",
+        description: "Não existe uma resposta certa. Escolha a que representa sua rotina.",
+        answers: [
+          "Ainda não tenho uma frequência definida.",
+          "Publico de vez em quando.",
+          "Consigo publicar algumas vezes por semana.",
+          "Tenho uma rotina de publicação organizada."
+        ]
+      },
+      {
+        question: "O que mais ajudaria você a crescer no TikTok hoje?",
+        description: "Escolha o que faria mais diferença para você neste momento.",
+        answers: [
+          "Ter ideias de vídeos para publicar.",
+          "Aprender a criar ganchos e roteiros melhores.",
+          "Entender como analisar e melhorar meus resultados.",
+          "Ter um método organizado para seguir e praticar."
+        ]
+      }
+    ];
+
+    let currentQuestion = 0;
+    let answerLocked = false;
+
+    const quizScreen = document.getElementById("quiz-screen");
+    const salesPage = document.getElementById("sales-page");
+    const quizCard = document.getElementById("quiz-card");
+    const quizQuestion = document.getElementById("quiz-question");
+    const quizDescription = document.getElementById("quiz-description");
+    const quizOptions = document.getElementById("quiz-options");
+    const quizProgressLabel = document.getElementById("quiz-progress-label");
+    const quizProgressPercent = document.getElementById("quiz-progress-percent");
+    const quizProgressFill = document.getElementById("quiz-progress-fill");
+    const quizProgressBar = document.getElementById("quiz-progress-bar");
+
+    function renderQuestion() {
+      answerLocked = false;
+
+      const question = quizQuestions[currentQuestion];
+      const questionNumber = currentQuestion + 1;
+      const progress = (questionNumber / quizQuestions.length) * 100;
+
+      quizProgressLabel.textContent =
+        `Pergunta ${questionNumber} de ${quizQuestions.length}`;
+
+      quizProgressPercent.textContent = `${Math.round(progress)}%`;
+      quizProgressFill.style.width = `${progress}%`;
+      quizProgressBar.setAttribute("aria-valuenow", questionNumber);
+
+      quizQuestion.textContent = question.question;
+      quizDescription.textContent = question.description;
+
+      quizOptions.innerHTML = "";
+
+      const letters = ["A", "B", "C", "D"];
+
+      question.answers.forEach((answer, index) => {
+        const button = document.createElement("button");
+
+        button.type = "button";
+        button.className = "quiz-option";
+
+        const letter = document.createElement("span");
+        letter.className = "quiz-option-letter";
+        letter.textContent = letters[index];
+
+        const answerText = document.createElement("span");
+        answerText.textContent = answer;
+
+        button.appendChild(letter);
+        button.appendChild(answerText);
+
+        button.addEventListener("click", () => {
+          selectAnswer(button);
+        });
+
+        quizOptions.appendChild(button);
+      });
+
+      quizCard.classList.remove("quiz-fade");
+
+      // Reinicia a animação para cada nova pergunta.
+      void quizCard.offsetWidth;
+
+      quizCard.classList.add("quiz-fade");
+    }
+
+    function selectAnswer(selectedButton) {
+      if (answerLocked) return;
+
+      answerLocked = true;
+
+      const allOptions = quizOptions.querySelectorAll(".quiz-option");
+
+      allOptions.forEach((option) => {
+        option.disabled = true;
+      });
+
+      selectedButton.classList.add("selected");
+
+      // Avança automaticamente após a seleção.
+      setTimeout(() => {
+        if (currentQuestion < quizQuestions.length - 1) {
+          currentQuestion++;
+          renderQuestion();
+        } else {
+          showSalesPage();
+        }
+      }, 180);
+    }
+
+    function showSalesPage() {
+      quizScreen.style.display = "none";
+      salesPage.style.display = "block";
+
+      // Preserva o comportamento do ano no rodapé original.
+      document.getElementById("current-year").textContent =
+        new Date().getFullYear();
+
+      window.scrollTo(0, 0);
+    }
+
+    // Inicia o quiz na primeira pergunta.
+    renderQuestion();
   </script>
 
 </body>
