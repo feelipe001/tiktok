@@ -5,14 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#080808">
+  <meta name="description" content="Aprenda a criar vídeos, desenvolver seu perfil e aplicar estratégias de conteúdo com o Método Crescer.">
   <title>Método Crescer | Aprenda a crescer no TikTok</title>
-  <meta name="description" content="Aprenda a criar vídeos, desenvolver seu perfil e aplicar estratégias para crescer no TikTok com o Método Crescer.">
 
   <style>
     :root {
       --bg: #080808;
       --surface: #111111;
-      --surface-light: #181818;
       --text: #ffffff;
       --muted: #b8b8b8;
       --cyan: #25f4ee;
@@ -44,15 +43,12 @@
       text-decoration: none;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
     .container {
       width: min(1080px, 90%);
       margin: 0 auto;
     }
+
+    /* CAPA PRINCIPAL */
 
     .hero {
       position: relative;
@@ -74,7 +70,7 @@
       z-index: -2;
       background-image: url("https://res.cloudinary.com/f5yuukov/image/upload/v1791518200/a0ad96b6-f3b1-4ca0-b742-1954e6bdc8b8.png");
       background-repeat: no-repeat;
-      background-position: center 35%;
+      background-position: center 45%;
       background-size: auto 760px;
     }
 
@@ -165,6 +161,8 @@
       font-size: 12px;
     }
 
+    /* VÍDEO */
+
     .video-section {
       padding: 15px 0 75px;
       background: var(--bg);
@@ -205,6 +203,8 @@
       border: 0;
     }
 
+    /* SEÇÕES */
+
     section.content-section {
       padding: 75px 0;
     }
@@ -239,6 +239,12 @@
       margin-left: auto;
       margin-right: auto;
     }
+
+    .highlight {
+      color: var(--cyan);
+    }
+
+    /* BENEFÍCIOS */
 
     .benefits-grid {
       display: grid;
@@ -278,9 +284,7 @@
       font-size: 14px;
     }
 
-    .highlight {
-      color: var(--cyan);
-    }
+    /* FRASE DE IMPACTO */
 
     .statement {
       padding: 55px 25px;
@@ -301,6 +305,8 @@
     .statement span {
       color: var(--cyan);
     }
+
+    /* MÓDULOS */
 
     .modules-grid {
       display: grid;
@@ -341,6 +347,8 @@
       font-size: 13px;
     }
 
+    /* PARA QUEM É */
+
     .audience-list {
       max-width: 760px;
       margin: 0 auto;
@@ -363,6 +371,8 @@
       font-weight: 900;
       margin-right: 8px;
     }
+
+    /* OFERTA */
 
     .offer-wrap {
       max-width: 560px;
@@ -442,6 +452,8 @@
       margin-top: 14px;
     }
 
+    /* FAQ */
+
     .faq-list {
       max-width: 800px;
       margin: 0 auto;
@@ -468,6 +480,8 @@
       padding-top: 12px;
     }
 
+    /* CHAMADA FINAL */
+
     .final-cta {
       padding: 75px 20px;
       text-align: center;
@@ -489,6 +503,8 @@
       color: var(--muted);
     }
 
+    /* RODAPÉ */
+
     footer {
       padding: 25px 20px;
       border-top: 1px solid var(--border);
@@ -502,6 +518,8 @@
       margin-top: 5px;
     }
 
+    /* CELULAR */
+
     @media (max-width: 700px) {
       .hero {
         min-height: 760px;
@@ -511,8 +529,7 @@
 
       .hero::before {
         background-size: 100% auto;
-        /* Imagem um pouco mais para cima no celular */
-        background-position: center 25%;
+        background-position: center 45%;
       }
 
       .hero::after {
@@ -636,7 +653,7 @@
 
       .hero::before {
         background-size: 100% auto;
-        background-position: center 25%;
+        background-position: center 45%;
       }
 
       h1 {
@@ -664,7 +681,6 @@
 
 <body>
 
-  <!-- CAPA PRINCIPAL -->
   <header class="hero">
     <div class="hero-content">
       <span class="eyebrow">MÉTODO CRESCER</span>
@@ -687,7 +703,6 @@
     </div>
   </header>
 
-  <!-- VÍDEO DE APRESENTAÇÃO -->
   <section class="video-section" id="apresentacao">
     <div class="container">
       <div class="section-heading">
@@ -707,7 +722,6 @@
     </div>
   </section>
 
-  <!-- BENEFÍCIOS -->
   <section class="content-section section-dark">
     <div class="container">
       <div class="section-heading">
@@ -738,7 +752,6 @@
     </div>
   </section>
 
-  <!-- FRASE DE IMPACTO -->
   <div class="statement">
     <p>
       Você não precisa esperar pelo vídeo perfeito.
@@ -746,7 +759,6 @@
     </p>
   </div>
 
-  <!-- CONTEÚDO DO MÉTODO -->
   <section class="content-section section-black">
     <div class="container">
       <div class="section-heading">
@@ -823,7 +835,6 @@
     </div>
   </section>
 
-  <!-- PARA QUEM É -->
   <section class="content-section section-dark">
     <div class="container center">
       <span class="eyebrow">FEITO PARA QUEM QUER EVOLUIR</span>
@@ -843,7 +854,6 @@
     </div>
   </section>
 
-  <!-- OFERTA -->
   <section class="content-section section-black" id="inscricao">
     <div class="container">
       <div class="offer-wrap">
@@ -879,7 +889,6 @@
     </div>
   </section>
 
-  <!-- PERGUNTAS FREQUENTES -->
   <section class="content-section section-dark">
     <div class="container">
       <div class="section-heading">
@@ -917,7 +926,6 @@
     </div>
   </section>
 
-  <!-- CHAMADA FINAL -->
   <section class="final-cta">
     <div class="container">
       <span class="eyebrow">SEU PRÓXIMO PASSO</span>
@@ -932,7 +940,6 @@
     </div>
   </section>
 
-  <!-- RODAPÉ -->
   <footer>
     <p>© <span id="current-year"></span> Método Crescer. Todos os direitos reservados.</p>
     <p>Produto independente, sem vínculo oficial com o TikTok.</p>
