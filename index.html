@@ -1,0 +1,182 @@
+
+:root {
+  --black: #ffffff;
+  --white: #050505;
+  --gray: #b3b3b3;
+  --light-gray: #0d0d0d;
+  --line: #242424;
+  --cyan: #25f4ee;
+  --pink: #fe2c55;
+}
+
+/* FUNDO E TEXTOS */
+
+html,
+body {
+  background: #050505;
+  color: #ffffff;
+}
+
+header {
+  background: #050505;
+  border-bottom: 1px solid #242424;
+}
+
+.brand {
+  color: #ffffff;
+}
+
+.header-label,
+.hero-description,
+.cta-note,
+.image-caption,
+.section-heading p,
+.benefit p,
+.module p,
+.audience-intro,
+.audience-list li,
+.offer-description,
+.price-label,
+.price-note,
+details p,
+.final-cta p {
+  color: #b3b3b3;
+}
+
+/* DESTAQUES */
+
+.headline-accent::after {
+  background: #25f4ee;
+}
+
+.eyebrow::before {
+  background: #fe2c55;
+  box-shadow: 5px 3px 0 #25f4ee;
+}
+
+/* BOTÕES */
+
+.cta {
+  background: #ffffff;
+  color: #050505;
+  box-shadow: 4px 4px 0 #25f4ee,
+             -3px -3px 0 #fe2c55;
+}
+
+.cta:hover {
+  box-shadow: 6px 6px 0 #25f4ee,
+             -4px -4px 0 #fe2c55;
+}
+
+/* IMAGEM PRINCIPAL */
+
+.hero-image-frame {
+  background: #111111;
+}
+
+/* VÍDEO */
+
+.video-section,
+.audience,
+.final-cta {
+  background: #0b0b0b;
+  border-color: #242424;
+}
+
+.video-frame {
+  background: #000000;
+}
+
+/* BENEFÍCIOS */
+
+.benefit {
+  border-top-color: #292929;
+}
+
+.benefit:nth-child(3n + 1) {
+  border-top-color: #fe2c55;
+}
+
+.benefit:nth-child(3n + 2) {
+  border-top-color: #25f4ee;
+}
+
+.benefit-number {
+  color: #25f4ee;
+}
+
+/* FRASE DE DESTAQUE */
+
+.statement {
+  background: #111111;
+  color: #ffffff;
+}
+
+.statement h2 span {
+  color: #25f4ee;
+}
+
+.statement p {
+  color: #b3b3b3;
+}
+
+/* MÓDULOS */
+
+.module-list,
+.module {
+  border-color: #292929;
+}
+
+.module-number {
+  background: #25f4ee;
+  color: #050505;
+}
+
+.module:nth-child(even) .module-number {
+  background: #fe2c55;
+  color: #ffffff;
+}
+
+/* OFERTA */
+
+.offer-box {
+  background: #101010;
+  border-color: #303030;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .25);
+}
+
+.offer-label {
+  background: #102a29;
+  color: #25f4ee;
+}
+
+.offer-list li {
+  color: #eeeeee;
+}
+
+.offer-list li span {
+  color: #25f4ee;
+}
+
+/* PERGUNTAS FREQUENTES */
+
+details,
+details:first-child {
+  border-color: #292929;
+}
+
+summary {
+  color: #ffffff;
+}
+
+summary::after {
+  color: #fe2c55;
+}
+
+/* RODAPÉ */
+
+footer {
+  background: #050505;
+  border-color: #242424;
+  color: #777777;
+}
